@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Giphy</title>
+    <style>
+        .border {
+            display: inline-block;
+            /*outline: 23px solid #ef3124;*/
+            /*-moz-outline-radius: 10px;*/
+            /*border: 23px solid #ef3124;*/
+            border-radius: 30px;
+        }
+        .fig {
+            /*box-shadow: 0 0 0 20px #ef3124;*/
+            border-radius: 20px;
+            padding: 150px;
+            display: block;
+            text-align: center;
+            color: #000000;
+            font-family: News Gothic,monospace;
+        }
+        .page {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+    </style>
+</head>
+<body class="page">
+<div class="border">
+        <div class="fig">
+            <img th:src="@{${url}}" />
+            <p th:text="${'yesterday: ' + rateYesterday}">
+            <p th:text="${'today: ' + rateToday}">
+            </p>
+        </div>
+</div>
+
+</body>
+</html>

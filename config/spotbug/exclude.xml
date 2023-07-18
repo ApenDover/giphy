@@ -1,0 +1,12 @@
+<FindBugsFilter>
+    <Match>
+        <Class name="ru.rtln.xfer.rate.provider.service.StorageService"/>
+        <Bug pattern="SQL_INJECTION_SPRING_JDBC"/>
+    </Match>
+    <Match>
+        <Bug pattern="EI_EXPOSE_REP,EI_EXPOSE_REP2"/>
+    </Match>
+    <Match>
+        <Bug pattern="SPRING_CSRF_PROTECTION_DISABLED"/>
+    </Match>
+</FindBugsFilter>
