@@ -35,6 +35,27 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
+tasks.register('deploy') {
+	doLast {
+		def remoteServer = 'root@ts.andrey.o.fvds.ru'
+		def remotePath = '~/docfiles'
+
+		// Загрузка Dockerfile и docker-compose.yml на удалённый сервер
+		exec {
+			commandLine 'scp', 'Dockerfile', 'docker-compose.yml', "${remoteServer}:${remotePath}"
+		}
+
+		// Выполнение команд на удалённом сервере
+		exec {
+			commandLine 'ssh', remoteServer, """
+            cd ${remotePath} &&
+            docker-compose down &&
+            docker-compose up -d --build
+            """
+		}
+	}
+}
+
 checkstyle {
 	toolVersion '10.3.1'
 }
