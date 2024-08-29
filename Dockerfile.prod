@@ -1,5 +1,5 @@
-# docker container run -d -p 80:8080 --name giphy -v log-giphy:/opt/giphy/logs apendover/giphy
 FROM eclipse-temurin:17.0.8.1_1-jre-jammy
 WORKDIR /opt/giphy/
-COPY ~jarFiles/*.jar app.jar
+COPY giphy.jar app.jar
+COPY application.yml application.yml
 ENTRYPOINT ["java","-jar","app.jar"]

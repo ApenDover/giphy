@@ -1,6 +1,16 @@
+server.port: 8080
 feign:
   client:
     config:
       default:
         connectTimeout: 500
         readTimeout: 500
+giphy:
+  url.general: https://api.giphy.com/v1/gifs
+  api.key:
+  courseUp: rich
+  courseDown: broke
+openexchangerates:
+  url.general: https://openexchangerates.org/api
+  app.id:
+  currency: USD
