@@ -23,7 +23,8 @@ public class GiphyResponseSetterService {
             log.info("get rich giphy");
             String link;
             try {
-                link = giphyService.getLinkOnRich().getData().getImages().getDownsizedMedium().getUrl();
+                final var response = giphyService.getLinkOnRich();
+                link = response.getData().getImages().getDownsizedMedium().getUrl();
                 GiphyLinkHashUtil.addRichLink(link);
                 giphyServiceResponse.setGiphyUrl(link);
             } catch (Exception e) {
@@ -43,7 +44,8 @@ public class GiphyResponseSetterService {
             log.info("get broke giphy");
             String link;
             try {
-                link = giphyService.getLinkOnBroke().getData().getImages().getDownsizedMedium().getUrl();
+                final var brokeResponse = giphyService.getLinkOnBroke();
+                link = brokeResponse.getData().getImages().getDownsizedMedium().getUrl();
                 GiphyLinkHashUtil.addBrokeLink(link);
                 giphyServiceResponse.setGiphyUrl(link);
             } catch (Exception e) {

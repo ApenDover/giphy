@@ -33,9 +33,9 @@ public class RateResponseSetterService {
         }
 
         if (todayRateValue == yesterdayRateValue) {
-            log.warn("Actual rate for this day is not available now");
+            log.debug("Actual rate for this day is not available now");
             if (Objects.isNull(CurrencyCashUtil.getYesterdayFromCash(currencyCode))) {
-                log.warn("Actual rate for this day is not available in cash too");
+                log.debug("Actual rate for this day is not available in cash too");
                 yesterdayRateValue = exchangeRateService.giveHistoryExchangeRateByCurrencyCode(currencyCode, DateUtil.getPastDate(2));
             } else {
                 yesterdayRateValue = CurrencyCashUtil.getYesterdayFromCash(currencyCode).getRateAmountYesterday();

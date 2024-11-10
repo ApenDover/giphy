@@ -18,8 +18,7 @@ public class ExchangeRateService {
     private final CourseClient courseClient;
 
     public double giveActualExchangeRateByCurrencyCode(CurrencyCode currencyCode) throws FeignException {
-        final CourseResponse rates;
-        rates = courseClient.courseToday();
+        final CourseResponse rates = courseClient.courseToday();
         if (rates.getRates().containsKey(currencyCode.toString())) {
             return rates.getRates().get(currencyCode.toString());
         } else {
@@ -29,8 +28,7 @@ public class ExchangeRateService {
     }
 
     public double giveHistoryExchangeRateByCurrencyCode(CurrencyCode currencyCode, String date) throws FeignException {
-        final CourseResponse rates;
-        rates = courseClient.courseHistory(date);
+        final CourseResponse rates = courseClient.courseHistory(date);
         if (rates.getRates().containsKey(currencyCode.toString())) {
             return rates.getRates().get(currencyCode.toString());
         } else {

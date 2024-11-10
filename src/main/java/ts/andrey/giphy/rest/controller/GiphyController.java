@@ -22,7 +22,7 @@ public class GiphyController {
     private final ActualGiphyByExchangeRateService actualGiphyByExchangeRateService;
 
     @ResponseBody
-    @RequestMapping("/getGiphy")
+    @RequestMapping("/api/getGiphy")
     public GiphyServiceResponse getGiphy(@RequestParam("currencyCode") int currencyNumber) {
         try {
             MDC.put("request", " - " + UUID.randomUUID());
