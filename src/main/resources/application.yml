@@ -1,9 +1,8 @@
 server.port: 8080
 
 giphy:
-  feign:
-    logger:
-      enabled: true
+  feign-logger:
+    enabled: true
   url.general: https://api.giphy.com/v1/gifs
   api.key:
   courseUp: rich

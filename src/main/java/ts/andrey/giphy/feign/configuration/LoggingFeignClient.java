@@ -1,8 +1,5 @@
 package ts.andrey.giphy.feign.configuration;
 
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import feign.Client;
 import feign.Request;
 import feign.Response;
@@ -29,11 +26,11 @@ public class LoggingFeignClient extends Client.Default {
             log.info("GET request to {}", request.url());
         }
 
-        try (final var response = super.execute(request, options)) {
+        try (var response = super.execute(request, options)) {
             final var bodyStream = response.body().asInputStream();
             final var responseBody = StreamUtils.copyToString(bodyStream, StandardCharsets.UTF_8);
             final var unformattedJson = JsonUtils.minifyJson(responseBody);
-            log.info("Response status: {}, headers: {}, body: {}", response.status(), response.headers(), unformattedJson);
+            log.debug("Response status: {}, headers: {}, body: {}", response.status(), response.headers(), unformattedJson);
             return response.toBuilder().body(responseBody, StandardCharsets.UTF_8).build();
         }
     }
